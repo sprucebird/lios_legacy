@@ -12,7 +12,7 @@ services:
     environment:
       SERVICE_NAME: lios
       SERVICE_TAGS: dev
-    working_dir: /var/www/html
+    working_dir: /site/wwwroot
     volumes:
       - ./:/site/wwwroot
     networks:
@@ -28,7 +28,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/var/www/html
+      - ./:/site/wwwroot
       - ./_Deployment/nginx/conf.d/:/etc/nginx/conf.d/
       - ./_Deployment/nginx/ssl/:/etc/nginx/ssl/
     networks:
