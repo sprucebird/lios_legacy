@@ -14,7 +14,7 @@ services:
       SERVICE_TAGS: dev
     working_dir: /var/www/html
     volumes:
-      - ./:/var/www/html
+      - ./:/site/wwwroot
     networks:
       - lios-net
 
