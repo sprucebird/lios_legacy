@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: github.com/sprucebird/lios_legacy/${{ secrets.AzureAppService_ContainerUsername_72b01893e5fa49c6857cb8c90fe2924a }}/lios_legacy:${{ github.sha }}
+        tags: ghcr.io/sprucebird/lios_legacy:sha256-732549b9406b26d6f6dfbf4d1eb78a7e04f34b475a98683b6798153b37bf2da7.sig
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'lioslegacy'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_ff1f4410bd414231a873b91b7321d356 }}
-        images: 'github.com/sprucebird/lios_legacy/${{ secrets.AzureAppService_ContainerUsername_72b01893e5fa49c6857cb8c90fe2924a }}/lios_legacy:${{ github.sha }}'
+        images: 'ghcr.io/sprucebird/lios_legacy:sha256-732549b9406b26d6f6dfbf4d1eb78a7e04f34b475a98683b6798153b37bf2da7.sig'
