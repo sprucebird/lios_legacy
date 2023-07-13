@@ -1,0 +1,61 @@
+services:
+
+  #LIOS app
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sprucebird/lios
+    container_name: lios
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: lios
+      SERVICE_TAGS: dev
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - lios-net
+
+  #Nginx Service
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www/html
+      - ./_Deployment/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./_Deployment/nginx/ssl/:/etc/nginx/ssl/
+    networks:
+      - lios-net
+
+  #MySQL Service
+  liosDatabase:
+    image: mariadb:10.5.8
+    container_name: liosDatabase
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_DATABASE: lios
+      MARIADB_USER: lios
+      MARIADB_PASSWORD: lios
+      MARIADB_ROOT_PASSWORD: police
+    volumes:
+      - mysqldb:/var/lib/mysql/
+    networks:
+      - lios-net
+
+networks:
+    lios-net:
+      driver: bridge
+  #Volumes
+volumes:
+    mysqldb:
+      driver: local
