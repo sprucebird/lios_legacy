@@ -26,12 +26,12 @@ jobs:
         username: ${{ secrets.AzureAppService_ContainerUsername_72b01893e5fa49c6857cb8c90fe2924a }}
         password: ${{ secrets.AzureAppService_ContainerPassword_d1f02a5c980e476db2f9f3d52c7f4a43 }}
 
-    - name: Build and push container image to registry
-      uses: docker/build-push-action@v3
-      with:
-        push: true
-        tags: ghcr.io/sprucebird/lios_legacy:sha256-732549b9406b26d6f6dfbf4d1eb78a7e04f34b475a98683b6798153b37bf2da7.sig
-        file: ./Dockerfile
+#     - name: Build and push container image to registry
+#       uses: docker/build-push-action@v3
+#       with:
+#         push: true
+#         tags: https://github.com/sprucebird/lios_legacy/
+#         file: ./Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
