@@ -22,7 +22,7 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://github.com/sprucebird/lios_legacy/
+        registry: ghcr.io/sprucebird/lios_legacy/
         username: ${{ secrets.AzureAppService_ContainerUsername_72b01893e5fa49c6857cb8c90fe2924a }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
