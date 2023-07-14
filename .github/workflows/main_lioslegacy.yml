@@ -24,7 +24,7 @@ jobs:
       with:
         registry: https://github.com/sprucebird/lios_legacy/
         username: ${{ secrets.AzureAppService_ContainerUsername_72b01893e5fa49c6857cb8c90fe2924a }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_d1f02a5c980e476db2f9f3d52c7f4a43 }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
