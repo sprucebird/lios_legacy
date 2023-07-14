@@ -48,4 +48,4 @@ jobs:
         app-name: 'lioslegacy'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_ff1f4410bd414231a873b91b7321d356 }}
-        images: 'ghcr.io/sprucebird/lios_legacy'
+        images: 'https://github.com/sprucebird/lios_legacy'
