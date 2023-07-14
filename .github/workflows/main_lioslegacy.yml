@@ -32,6 +32,8 @@ jobs:
         push: true
         tags: ghcr.io/sprucebird/lios_legacy
         file: ./Dockerfile
+        secrets: |
+            "github_token=${{ secrets.GITHUB_TOKEN }}"
 
   deploy:
     runs-on: ubuntu-latest
