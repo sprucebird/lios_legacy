@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy container app to Azure Web App - lioslegacy
+name: [AZURE] Build and deploy lioslegacy to Azure Web App
 
 on:
   push:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'lioslegacy'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_ff1f4410bd414231a873b91b7321d356 }}
-        images: 'ghcr.io/sprucebird/lios_legacy:sha256-732549b9406b26d6f6dfbf4d1eb78a7e04f34b475a98683b6798153b37bf2da7.sig'
+        images: 'https://github.com/sprucebird/lios_legacy/'
