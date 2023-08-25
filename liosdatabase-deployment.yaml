@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert
+    kompose.version: 1.30.0 (9d8dcb518)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: liosdatabase
+  name: liosdatabase
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: liosdatabase
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert
+        kompose.version: 1.30.0 (9d8dcb518)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/lios-legacy-main-lios-net: "true"
+        io.kompose.service: liosdatabase
+    spec:
+      containers:
+        - env:
+            - name: MARIADB_DATABASE
+              value: lios
+            - name: MARIADB_PASSWORD
+              value: lios
+            - name: MARIADB_ROOT_PASSWORD
+              value: police
+            - name: MARIADB_USER
+              value: lios
+          image: mariadb:10.5.8
+          name: liosdatabase
+          ports:
+            - containerPort: 3306
+              hostPort: 3306
+              protocol: TCP
+          resources: {}
+          tty: true
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysqldb
+      restartPolicy: Always
+      volumes:
+        - name: mysqldb
+          persistentVolumeClaim:
+            claimName: mysqldb
+status: {}

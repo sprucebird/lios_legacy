@@ -1,0 +1,42 @@
+name: Trigger auto deployment for lios
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/lios-AutoDeployTrigger-47599cc5-dfdd-470d-bba5-ae01ac795409.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.LIOS_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: ghcr.io/sprucebird/lios_legacy
+          registryUsername: ${{ secrets.LIOS_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.LIOS_REGISTRY_PASSWORD }}
+          containerAppName: lios
+          resourceGroup: lios
+          imageToBuild: ghcr.io/sprucebird/lios_legacy/lios:${{ github.sha }}
+          dockerfilePath: Dockerfile
+
+     
+

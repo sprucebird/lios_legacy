@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert
+    kompose.version: 1.30.0 (9d8dcb518)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: liosdatabase
+  name: liosDatabase
+  namespace: default
+spec:
+  ports:
+    - name: "3306"
+      port: 3306
+      targetPort: 3306
+  selector:
+    io.kompose.service: liosdatabase
+status:
+  loadBalancer: {}
