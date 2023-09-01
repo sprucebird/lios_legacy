@@ -308,6 +308,7 @@ class TransportStatusReportController extends Controller
 
   public function trag()
   {
+    //Jira test
     $link = file_get_contents("http://vps1.salune.sprucebird.lt/trag");
     $obj = json_decode($link);
     foreach ($obj as $key => $img) {
