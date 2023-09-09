@@ -32,18 +32,18 @@ COPY . .
 #RUN php -d memory_limit=-1 composer update
 
 # disabled because of Windows 404 WSL bs
-# RUN composer update --ignore-platform-reqs 
+RUN composer update --ignore-platform-reqs 
 
 # git required by some composer packages
 RUN apk update && apk add git
-
-RUN php artisan config:clear
 
 # install composer packages
 RUN composer install
 
 # generate php autoload files
 RUN composer dump-autoload
+
+RUN php artisan config:clear
 
 # migrate tables to the database
 RUN php artisan migrate

@@ -12,10 +12,10 @@
 */
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
-// Route::get('/{vue_capture?}', function () {
-//  return view('home');
-// })->where('vue_capture', '[\/\w\.-]*');
+// Route::get('/app', 'HomeController@index')->name('home');
+Route::get('/app/{vue_capture?}', function () {
+ return view('home');
+})->where('vue_capture', '[\/\w\.-]*');
 
 
 Route::prefix('/api')->group(function () {
