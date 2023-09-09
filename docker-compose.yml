@@ -28,9 +28,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/site/wwwroot
-      - ./_Deployment/nginx/conf.d/:/etc/nginx/conf.d/
-      - ./_Deployment/nginx/ssl/:/etc/nginx/ssl/
+      - ${WEBAPP_STORAGE_HOME}/:/site/wwwroot
+      - ${WEBAPP_STORAGE_HOME}/_Deployment/nginx/conf.d/:/etc/nginx/conf.d/
+      - ${WEBAPP_STORAGE_HOME}/_Deployment/nginx/ssl/:/etc/nginx/ssl/
     networks:
       - lios-net
 
