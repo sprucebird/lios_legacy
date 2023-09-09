@@ -14,7 +14,7 @@ services:
       SERVICE_TAGS: dev
     working_dir: /site/wwwroot
     volumes:
-      - ./:/site/wwwroot
+      - ${WEBAPP_STORAGE_HOME}/:/site/wwwroot
     networks:
       - lios-net
 
