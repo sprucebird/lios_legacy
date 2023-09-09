@@ -64,7 +64,8 @@ class TransportStatusReport extends Model implements HasMedia
 				try {
 					$sz = getimagesize($img->getPath());
 					$report->media[$key] = array(
-						'src' => $img->getUrl(),
+						'src' => $img->getUrl("jpg"),
+						'thumb' => $img->getUrl("thumb"),
 						'w' => $sz[0],
 						'h' => $sz[1]
 					);
