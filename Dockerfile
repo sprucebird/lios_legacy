@@ -46,7 +46,7 @@ RUN composer install
 RUN composer dump-autoload
 
 # migrate tables to the database
-# RUN php artisan migrate
+RUN php artisan migrate
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000

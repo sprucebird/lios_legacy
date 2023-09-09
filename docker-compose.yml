@@ -43,10 +43,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MARIADB_DATABASE: lios
-      MARIADB_USER: lios
-      MARIADB_PASSWORD: lios
-      MARIADB_ROOT_PASSWORD: police
+      MYSQL_DATABASE: lios
+      MYSQL_USER: lios
+      MYSQL_PASSWORD: lios
+      MYSQL_ROOT_PASSWORD: police
     volumes:
       - mysqldb:/var/lib/mysql/
     networks:
