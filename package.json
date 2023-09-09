@@ -24,6 +24,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "@tabler/core": "^1.0.0-beta20",
     "@toast-ui/vue-calendar": "^1.1.0",
     "apexcharts": "^3.8.4",
     "epic-spinners": "^1.1.0",

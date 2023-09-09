@@ -51,8 +51,8 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            // 'url' => env('APP_URL').'/storage',
-            'url' => 'https://vps1.salune.sprucebird.lt/storage',
+            'url' => env('APP_URL').'/storage', //local debug only!
+            // 'url' => 'https://vps1.salune.sprucebird.lt/storage',
             'visibility' => 'public',
         ],
 

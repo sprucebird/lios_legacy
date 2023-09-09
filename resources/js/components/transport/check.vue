@@ -140,11 +140,21 @@
                             <span class="bg-label bg-label-warning" v-if="result.status == 2">Pildoma</span>
                           </td>
                           <td class="text-nowrap">
-                            <!-- <div class="row" v-for="media in result.media">
+                            <div class="row" v-for="media in result.media">
 
-                              <img class="col-md-2" style="max-height: 50px" v-if="media.src != null" @click="showPhotoSwipe(0, index)" :src="media.src">
-                            </div> -->
-                            <button type="button" v-if="result.media != null" class="dropdown-item" name="button" @click="showPhotoSwipe(0, index)"><i v-if="result.id < 295 || result.id == 313" class="dropdown-icon fe fe-play"></i> <img v-if="result.id >= 295 && result.id != 313" :src="result.thumb" @error="result.thumb = result.media[0].src" style="max-height: 70px;"> </button>
+                              <img class="col-md-2" style="max-height: 70px" v-if="media.src != null" @click="showPhotoSwipe(0, index)" :src="media.thumb">
+                            </div>
+                            <!-- <button type="button" 
+                                    v-if="result.media != null" 
+                                    class="dropdown-item" 
+                                    name="button" 
+                                    @click="showPhotoSwipe(0, index)">
+                                    <i v-if="result.id < 295 || result.id == 313" class="dropdown-icon fe fe-play"></i> 
+                                    <img 
+                                        v-if="result.id >= 295 && result.id != 313" 
+                                        :src="result.thumb" 
+                                        
+                                        style="max-height: 70px;"> </button> -->
                             <v-photoswipe v-if="result.media != null" :isOpen="isOpen[index]" :items="result.media" :options="opt" @close="hidePhotoSwipe(index)"></v-photoswipe>
                             <span class="tag tag-red" v-if="result.media == null">Nera</span>
 

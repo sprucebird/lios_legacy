@@ -95,12 +95,15 @@ import Vue from 'vue'
 import VueGoogleCharts from 'vue-google-charts'
 Vue.use(VueGoogleCharts)
 
-document.addEventListener("DOMContentLoaded", function(event) {
-      // - Code to execute when all DOM content is loaded.
-      // - including fonts, images, etc.
-      var loader = document.getElementById("loader");
-      loader.style.display = 'none';
-});
+/*
+  Disabled because of /storage retrieval errors
+*/
+// document.addEventListener("DOMContentLoaded", function(event) {
+//       // - Code to execute when all DOM content is loaded.
+//       // - including fonts, images, etc.
+//       var loader = document.getElementById("loader");
+//       loader.style.display = 'none';
+// });
 
 
 // 1. Define route components.
@@ -141,7 +144,7 @@ import err from './components/sysErrors.vue';
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [{
-    path: '/',
+    path: '/home',
     component: home
   },
   {
@@ -196,7 +199,7 @@ const routes = [{
     component: userAdd
   },
   {
-    path: '/system/errors',
+    path: '/system/errors', 
     component: err
   },
 
@@ -206,7 +209,7 @@ const routes = [{
 // You can pass in additional options here, but let's
 // keep it simple for now.
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   linkExactActiveClass: 'is-active',
   routes // short for `routes: routes`
 });

@@ -37,7 +37,7 @@ class TransportStatusReportController extends Controller
     foreach ($tr as $rep) $rep->populate();
 
     //DISABLED
-    //filters didn't work because after the Pagination Integration, all reports was moved into data branch inside reports branch.
+    //filters didn't work because after the Pagination Integration, all reports were moved into data branch inside reports branch.
     // return response()->json(['reports' => $tr]);
     return response()->json($tr);
   }
@@ -308,7 +308,7 @@ class TransportStatusReportController extends Controller
 
   public function trag()
   {
-    $link = file_get_contents("http://vps1.salune.sprucebird.lt/trag");
+    $link = file_get_contents(env('APP_URL') + "/trag");
     $obj = json_decode($link);
     foreach ($obj as $key => $img) {
       if ($key >= 5) return;
