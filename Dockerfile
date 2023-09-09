@@ -11,7 +11,6 @@ RUN apk add --no-cache \
         libwebp-dev \
         freetype-dev
 
-
 RUN docker-php-ext-install exif
 RUN docker-php-ext-configure exif \
             --enable-exif
@@ -31,22 +30,24 @@ WORKDIR /
 COPY . .
 #RUN php -d memory_limit=-1 composer update
 
+RUN composer update
+RUN composer install
 # disabled because of Windows 404 WSL bs
-RUN composer update --ignore-platform-reqs 
+# RUN composer update --ignore-platform-reqs 
 
 # git required by some composer packages
 RUN apk update && apk add git
 
+RUN php artisan config:clear
+
 # install composer packages
-RUN composer install
+# RUN composer install
 
 # generate php autoload files
 RUN composer dump-autoload
 
-RUN php artisan config:clear
-
 # migrate tables to the database
-RUN php artisan migrate
+# RUN php artisan migrate
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
