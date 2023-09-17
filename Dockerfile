@@ -26,11 +26,11 @@ RUN chmod +x /usr/local/bin/composer
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-WORKDIR /
-COPY . .
+WORKDIR /app
+COPY . /app
 #RUN php -d memory_limit=-1 composer update
 
-RUN composer update
+# RUN composer update
 RUN composer install
 # disabled because of Windows 404 WSL bs
 # RUN composer update --ignore-platform-reqs 
@@ -41,16 +41,19 @@ RUN apk update && apk add git
 RUN php artisan config:clear
 
 # install composer packages
-# RUN composer install
+# RUN composer install Ęs
 
 # generate php autoload files
 RUN composer dump-autoload
 
 # migrate tables to the database
-# RUN php artisan migrate
+RUN php artisan migrate
 
 # Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"]
+# EXPOSE 9000
+# CMD ["php-fpm"]
+
+CMD php artisan serve --host=0.0.0.0 --port=80
+EXPOSE 80
 
 # EXPOSE 80 443
